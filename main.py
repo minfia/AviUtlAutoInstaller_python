@@ -39,7 +39,7 @@ def create_install_preparation_frame(frame, bg="white"):
 
     # インストール先選択
     global install_pre_widget
-    install_pre_widget = instdir.InstallDirWidget(preparation_frame, bg=bg)
+    install_pre_widget = instdir.InstallDirWidget(preparation_frame, install_init_dir="{0}\\".format(os.getcwd()), bg=bg)
     # エンコーダ選択
     global encoder_sel_widget
     encoder_sel_widget = encsel.EncoderSelectWidget(preparation_frame, bg=bg)

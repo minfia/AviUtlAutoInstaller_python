@@ -7,7 +7,7 @@ import tkinter.ttk as ttk
 
 
 class InstallDirWidget(tk.Frame):
-    def __init__(self, master=None, bg="white"):
+    def __init__(self, master=None, install_init_dir="", bg="white"):
         """コンストラクタ
         各ウィジェットの生成をする
         Parameters
@@ -24,6 +24,7 @@ class InstallDirWidget(tk.Frame):
         self.create_install_dir_entry(frame=self.widget_frame, row=2, column=1)
         self.create_dialog_button(frame=self.widget_frame, row=2, column=2, bg=bg)
         self.create_remove_checkbutton(frame=self.widget_frame, row=3, column=1, bg=bg)
+        self.install_dir.set(install_init_dir)
 
     def create_label(self, frame, row, column, bg):
         """ラベル生成
@@ -95,7 +96,8 @@ class InstallDirWidget(tk.Frame):
         """ディレクトリ選択ダイアログを表示する
         選択されたディレクトリを入力欄に表示する
         """
-        self.dir_path = tk.filedialog.askdirectory(title="インストール先を選択してください")
+        self.dir_path_pre = tk.filedialog.askdirectory(title="インストール先を選択してください")
+        self.dir_path = self.dir_path_pre.replace("/", "\\")
         if self.dir_path != "":
             self.install_dir.set(self.dir_path)
 
