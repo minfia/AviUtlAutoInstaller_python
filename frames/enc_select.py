@@ -24,6 +24,14 @@ class EncoderSelectWidget(tk.Frame):
         self.create_encoder_checkbutton(frame=self.widget_frame, bg=bg)
 
     def create_encoder_label(self, frame, bg):
+        """ラベルを生成
+        Patameters
+        ----------
+        frame : Frame
+            表示する親フレーム
+        bg : RGB or string
+            背景色
+        """
         ttk.Style().configure("EncL.TLabel", background=bg)
         self.select_label = ttk.Label(frame, text="インストールするエンコーダ", style="EncL.TLabel")
         self.select_label.pack(anchor="w", padx=4)
