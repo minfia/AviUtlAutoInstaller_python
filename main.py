@@ -20,6 +20,10 @@ cancel_button = None
 
 def create_main_frame(main_window):
     """メインウィンドウ用のフレーム
+    Parameters
+    ----------
+    main_window : TK
+        メインウィンドウ
     """
     main_frame = tk.Frame(main_window, bg="white")
     main_frame.pack(fill="both", expand=1)
@@ -32,6 +36,12 @@ def create_main_frame(main_window):
 
 def create_install_preparation_frame(frame, bg="white"):
     """インストール準備用フレーム
+    Parameters
+    ----------
+    frame : Frame
+        表示する親フレーム
+    bg : RGB or string
+        背景色
     """
     global preparation_frame
     preparation_frame = tk.Frame(frame, bg=bg)
@@ -46,6 +56,12 @@ def create_install_preparation_frame(frame, bg="white"):
 
 def create_install_progress_frame(frame, bg="white"):
     """インストール実行用フレーム
+    Parameters
+    ----------
+    frame : Frame
+        表示する親フレーム
+    bg : RGB or string
+        背景色
     """
     global progress_frame
     progress_frame = tk.Frame(frame, bg=bg)
@@ -56,9 +72,9 @@ def create_install_progress_frame(frame, bg="white"):
 
 def create_buttons_frame(frame, bg="white"):
     """インストール/キャンセルボタンの生成
-    Parameter
-    ---------
-    main_frame : Frame
+    Parameters
+    ----------
+    frame : Frame
         表示する親フレーム
     bg : RGB or string
         背景色
