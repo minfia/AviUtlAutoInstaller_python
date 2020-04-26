@@ -8,6 +8,8 @@ import tkinter.ttk as ttk
 import frames.install_dir as instdir
 import frames.enc_select as encsel
 import frames.install_progress as instprog
+import modules.download_progress as dlprog
+import libs.install_config as instconf
 
 install_pre_widget = None
 encoder_sel_widget = None
@@ -98,35 +100,52 @@ def install_button_command():
     ここでインストール可能かのチェックを行う
     また、インストールに必要なパラメータを設定する
     """
-    inst_dir = install_pre_widget.get_install_path()
-    if inst_dir == "":
+    instconf.install_dir_reflection(install_pre_widget.get_install_path())
+    if instconf.install_dir == "":
         messagebox.showinfo(title="確認", message="インストール先を選択してください")
         return
 
     # インストール可能かチェック
     access_message = None
     try:
-        os.mkdir("{0}AviUtl".format(inst_dir))
-    except FileExistsError:
-        access_message = "すでにAviUtlディレクトリが存在してします"
+        os.mkdir("{0}\\aviutl_install_test_dir".format(instconf.install_dir))
     except FileNotFoundError:
-        access_message = "インストール先のディレクトリが存在しません\n{0}".format(inst_dir)
+        access_message = "インストール先のディレクトリが存在しません\n{0}".format(instconf.install_dir)
     except PermissionError:
-        access_message = "インストール先に書き込み権限がありません\n{0}".format(inst_dir)
+        print("out")
+        access_message = "インストール先に書き込み権限がありません\n{0}".format(instconf.install_dir)
     except Exception as e:
         access_message = str(e)
+    finally:
+        if os.path.exists("{0}\\aviutl_install_test_dir".format(instconf.install_dir)):
+            os.rmdir("{0}\\aviutl_install_test_dir".format(instconf.install_dir))
+
+    if os.path.exists(instconf.aviutl_dir):
+        access_message = "すでにAviUtlディレクトリが存在してします"
 
     if access_message:
         messagebox.showerror(title="エラー", message=access_message)
         return
 
-    if messagebox.askquestion(title="確認", message="{0}AviUtl\nにインストールを開始しますか？".format(inst_dir)) == "yes":
+    # 各ウィジェットの設定をinstconfに反映
+    instconf.backup_enable = install_pre_widget.get_keep_dl_file()
+    instconf.install_encoder_reflection(encoder_sel_widget.get_enc_type_list())
+
+    if messagebox.askquestion(title="確認", message="{0}\nにインストールを開始しますか？".format(instconf.install_dir)) == "yes":
         global install_button
+        makedirs()
         install_button.configure(state="disabled")
         preparation_frame.pack_forget()
         progress_frame.pack(fill="both")
-    else:
-        os.rmdir("{0}AviUtl".format(inst_dir))
+        result = dlprog.download_start(install_progress_widget, instconf.download_list)
+
+def makedirs():
+    try:
+        os.mkdir(instconf.aviutl_dir)
+        os.mkdir(instconf.dl_temp_dir)
+    except Exception as e:
+        access_message = str(e)
+
 
 def cancel_button_command():
     """キャンセルボタン
@@ -137,6 +156,7 @@ def close_event():
     """終了イベント
     """
     if messagebox.askquestion(title="終了", message="インストールをキャンセルしますか？") == "yes":
+        dlprog.download_stop()
         sys.exit()
 
 def main():

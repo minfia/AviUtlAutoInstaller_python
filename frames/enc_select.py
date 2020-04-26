@@ -59,3 +59,7 @@ class EncoderSelectWidget(tk.Frame):
                             variable=self.checkbutton_status_list[i][1]).pack(side="left", padx=4)
             self.checkbutton_status_list[i][1].set(self.checkbutton_status_list[i][2])
 
+    def get_enc_type_list(self):
+        enc_list = [self.x264_enc_boolean.get(), self.qsv_enc_boolean.get(), self.nvenc_boolean.get(), self.vceenc_boolean.get()]
+        return enc_list
+
