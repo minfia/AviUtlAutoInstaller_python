@@ -7,7 +7,7 @@ from tkinter import messagebox
 import tkinter.ttk as ttk
 import frames.install_dir as instdir
 import frames.enc_select as encsel
-import frames.install_progress as instprog
+import frames.progress as prog
 import modules.download_progress as dlprog
 import libs.install_config as instconf
 
@@ -70,7 +70,7 @@ def create_install_progress_frame(frame, bg="white"):
     progress_frame.pack(fill="both")
 
     global install_progress_widget
-    install_progress_widget = instprog.InstallProgressWidget(progress_frame, bg=bg)
+    install_progress_widget = prog.InstallProgressWidget(progress_frame, bg=bg)
 
 def create_buttons_frame(frame, bg="white"):
     """インストール/キャンセルボタンの生成
