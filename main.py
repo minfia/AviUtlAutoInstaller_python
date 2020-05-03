@@ -16,6 +16,8 @@ import modules.install_progress as instprog
 import libs.install_config as instconf
 import libs.utils
 
+APP_VERSION = "0.1.0"
+
 install_pre_widget = None
 encoder_sel_widget = None
 
@@ -39,7 +41,7 @@ def create_main_frame(main_window):
     create_install_progress_frame(frame=main_frame)
     progress_frame.pack_forget()
 
-    create_buttons_frame(frame=main_frame)
+    create_buttons_version_frame(frame=main_frame)
 
 def create_install_preparation_frame(frame, bg="white"):
     """インストール準備用フレーム
@@ -77,8 +79,8 @@ def create_install_progress_frame(frame, bg="white"):
     global install_progress_widget
     install_progress_widget = prog.InstallProgressWidget(progress_frame, bg=bg)
 
-def create_buttons_frame(frame, bg="white"):
-    """インストール/キャンセルボタンの生成
+def create_buttons_version_frame(frame, bg="white"):
+    """インストール/キャンセルボタン、バージョンラベルの生成
     Parameters
     ----------
     frame : Frame
@@ -89,9 +91,12 @@ def create_buttons_frame(frame, bg="white"):
     button_status_list = [["キャンセル"  ,  cancel_button_command   ],
                           ["インストール",  install_button_command  ]]
     buttons_frame = tk.Frame(frame, width=200, bg=bg)
-    buttons_frame.pack(anchor="e", side="bottom")
+    buttons_frame.pack(anchor="e", side="bottom", fill="x")
     button_style = ttk.Style()
     button_style.configure("BTsFrame.TButton", background=bg)
+
+    version_label = tk.Label(buttons_frame, text="ver. {0}".format(APP_VERSION), bg=bg)
+    version_label.pack(anchor="w", side="left", padx=4)
 
     global install_button
     global cancel_button
