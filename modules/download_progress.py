@@ -30,6 +30,10 @@ def download_start(progress_instance, download_file_list):
     for item in download_file_list:
         if not item.dl_enable:
             continue
+        if "drive.google.com" in item.url:
+            progress_instance.set_indeterminate()
+        else:
+            progress_instance.set_determinate()
         for retry_count in range(-1, __MAX_RETRY, 1):
             future = thread_pool.submit(__downloader.download, item.url, instconf.dl_temp_dir, item.file_name)
             while (__downloader.download_file_size == 0) and (__downloader.get_download_status() != dl.DownloadStatus.ERROR):
