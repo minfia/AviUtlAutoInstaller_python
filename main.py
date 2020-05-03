@@ -150,17 +150,22 @@ def install_button_command():
 
         # インストール処理
         result = instprog.install_start(install_progress_widget, instconf.download_list)
-        if result == 0:
-            if instconf.backup_enable:
-                for f in instconf.download_list:
-                    if (f.download_file_type == instconf.DownloadFileType.TOOL) or ((not f.dl_enable) and (not f.result)):
-                        continue
-                    check_file = "{0}\\{1}".format(instconf.backup_dir, f.file_name)
-                    if exists(check_file):
-                        os.remove(check_file)
-                    shutil.move("{0}\\{1}".format(instconf.dl_temp_dir, f.file_name), check_file)
+        if not result == 0:
+            if not result == 1:
+                messagebox.showerror(title = "エラー", message = "インストールに失敗しました")
+            sys.exit()
 
-            messagebox.showinfo(title="情報", message="インストールが完了しました")
+        if instconf.backup_enable:
+            for f in instconf.download_list:
+                if (f.download_file_type == instconf.DownloadFileType.TOOL) or ((not f.dl_enable) and (not f.result)):
+                    continue
+                check_file = "{0}\\{1}".format(instconf.backup_dir, f.file_name)
+                if exists(check_file):
+                    os.remove(check_file)
+                shutil.move("{0}\\{1}".format(instconf.dl_temp_dir, f.file_name), check_file)
+        shutil.rmtree(instconf.dl_temp_dir)
+        messagebox.showinfo(title="情報", message="インストールが完了しました")
+        sys.exit()
 
 def makedirs():
     try:
