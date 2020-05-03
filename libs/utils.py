@@ -6,7 +6,7 @@ import glob
 import subprocess
 import shutil
 
-def run_aviutl(aviutl_path, kill):
+def run_aviutl(aviutl_path, kill=False):
     """AviUtlを実行する
     Parameters
     ----------
