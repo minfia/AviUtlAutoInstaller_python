@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# import os
 from concurrent.futures import ThreadPoolExecutor
+from os.path import getsize
 import libs.file_download as dl
 import libs.install_config as instconf
 
@@ -43,7 +43,12 @@ def download_start(progress_instance, download_file_list):
                 progress_instance.update_progress(__downloader.download_complete_size)
             dl_result = future.result()
             if dl_result >= 0:
+                # エラー以外
                 if dl_result == 0:
+                    # 正常終了
+                    if (item.download_file_type == instconf.DownloadFileType.ENCODER) and (getsize("{0}\\{1}".format(instconf.dl_temp_dir, item.file_name)) < 1000000):
+                        # エンコーダダウンロードエラー
+                        continue
                     item.result = True
                 break
         if dl_result == 1:
