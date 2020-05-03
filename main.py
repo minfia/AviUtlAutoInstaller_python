@@ -153,6 +153,7 @@ def install_button_command():
         if not result == 0:
             if not result == 1:
                 messagebox.showerror(title = "エラー", message = "ファイルダウンロードでエラー")
+            shutil.rmtree(instconf.aviutl_dir)
             sys.exit()
 
         # インストール処理
@@ -160,6 +161,7 @@ def install_button_command():
         if not result == 0:
             if not result == 1:
                 messagebox.showerror(title = "エラー", message = "インストールに失敗しました")
+            shutil.rmtree(instconf.aviutl_dir)
             sys.exit()
 
         if instconf.backup_enable:
