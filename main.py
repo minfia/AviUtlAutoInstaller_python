@@ -142,8 +142,8 @@ def install_button_command():
         # ダウンロード処理
         result = dlprog.download_start(install_progress_widget, instconf.download_list)
         if not result == 0:
-            
-            return
+            messagebox.showerror(title = "エラー", message = "ファイルダウンロードでエラー")
+            sys.exit()
 
         # インストール処理
         result = instprog.install_start(install_progress_widget, instconf.download_list)
