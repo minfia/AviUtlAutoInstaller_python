@@ -14,6 +14,7 @@ import frames.progress as prog
 import modules.download_progress as dlprog
 import modules.install_progress as instprog
 import libs.install_config as instconf
+import libs.utils
 
 install_pre_widget = None
 encoder_sel_widget = None
@@ -166,6 +167,7 @@ def install_button_command():
                 shutil.move("{0}\\{1}".format(instconf.dl_temp_dir, f.file_name), check_file)
         shutil.rmtree(instconf.dl_temp_dir)
         messagebox.showinfo(title="情報", message="インストールが完了しました")
+        libs.utils.run_aviutl("{0}\\aviutl.exe".format(instconf.aviutl_dir))
         sys.exit()
 
 def makedirs():
