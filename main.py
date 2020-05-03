@@ -9,6 +9,7 @@ import frames.install_dir as instdir
 import frames.enc_select as encsel
 import frames.progress as prog
 import modules.download_progress as dlprog
+import modules.install_progress as instprog
 import libs.install_config as instconf
 
 install_pre_widget = None
@@ -132,17 +133,29 @@ def install_button_command():
     instconf.install_encoder_reflection(encoder_sel_widget.get_enc_type_list())
 
     if messagebox.askquestion(title="確認", message="{0}\nにインストールを開始しますか？".format(instconf.install_dir)) == "yes":
-        global install_button
+        global install_button, cancel_button
         makedirs()
         install_button.configure(state="disabled")
         preparation_frame.pack_forget()
         progress_frame.pack(fill="both")
+
+        # ダウンロード処理
         result = dlprog.download_start(install_progress_widget, instconf.download_list)
+        if not result == 0:
+            
+            return
+
+        # インストール処理
+        result = instprog.install_start(install_progress_widget, instconf.download_list)
+        if result == 0:
+            messagebox.showinfo(title="情報", message="インストールが完了しました")
 
 def makedirs():
     try:
         os.mkdir(instconf.aviutl_dir)
         os.mkdir(instconf.dl_temp_dir)
+        os.makedirs(instconf.script_dir)
+        os.mkdir(instconf.figure_dir)
     except Exception as e:
         access_message = str(e)
 
@@ -157,6 +170,7 @@ def close_event():
     """
     if messagebox.askquestion(title="終了", message="インストールをキャンセルしますか？") == "yes":
         dlprog.download_stop()
+        instprog.install_stop()
         sys.exit()
 
 def main():
