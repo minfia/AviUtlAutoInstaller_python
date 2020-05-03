@@ -216,6 +216,32 @@ def main():
     root.protocol("WM_DELETE_WINDOW", close_event)
     # ウィンドウサイズ固定
     root.resizable(0, 0)
+    
+    ico_data = """iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEBklEQVR4nO2bS2gU
+    dxzHP/+4boymm4ctIULBHmJaBR8H6UV7aUUxEPASGkx6sIciFMFLT2qR6sXHQW/F
+    By1iPbQIHlTwgaD0oAVBIVAxpGkPgaVm18Tousm6I/91kuxMZmb/89idWTMfGDKv
+    /39+v+/8f7//YzbExMTExMQsXoSd55qmRUoUIYS0Sdq7DEgBrUATkHBTjb7NAC+A
+    tJvCoSOEaNE0bQJo1oWQIjS6sEv6m5TvF3gu/9aVAEC3EEI6cLf8pGytsoXYYXVd
+    07ReYEW9CbABWEVZiDo5bsZU5g3Q0FB9mwOlNcDKclKTehMgSGQiLNZbCNjitdeq
+    WwHMsV8pCdrdU7chIJ1y+9atyizmHFCitiFwMu109VPgC72rWwN0Ah/pA50Wp1Gr
+    H8LOAXJEtxfYowtQc8IUYAdwbnZg4xaLkV3FGqySYFgC7AZ+BZZ4rcCc2VV6Aave
+    IAwBNgHnbZwfAa4B94Fh4H9gUp+5VQWnxCInHceBAaA9qIff+u53vuzaajj39NkI
+    +68c4trft5W7tvK3qToZMpWRRkw4tYBjwD4laxT5rKNrgfN/jj5gx5l+pvIvg3yU
+    Mk4CDAb9sN612w3Hr2ZyDP72vSfn3cwCnco4CTDX7Jckk2w7epz1Xw/Q1OY9Gvpu
+    TMDI67njoY0r+ea/f5XLn85Btgh0iAUJTSV0PCfBbUeO8fle/9HQPlEwHA9/nPRd
+    5ywqvYAVSkPh9f3BRENzrmg4zrR47gWDIA8UlATw0+zLSRSMb+LFcncCfBjsYDgj
+    01BNJ0PJGaMA00l3Hn1Sppds8m4ToanMGBW6Qd/03Jtk81DOtppDP89Pjv5a18TV
+    rSnHR0oB2hogmzYKaRLisJXjJoaFEClN08arKsD1LSlSL4t0j+Yd73uyurF0byXa
+    BPQ1wj9v3m3PdB2yxnKvKlQjR5XjskGWWoTDjXMy/zjl/SNJsqDx7eUMHZmC5fV0
+    e4Jzu9qZXuo9wA83G8q6qqjqOWA6IbjY08rkioUJT56T1/w475eaJMFZR2cS847K
+    /Ys7rYXxw+yyl+pWs15ANvU/vmqhKChtcj+9Mvw12ZpaMJ/stNJ+FKj5K5DdXZRY
+    9KvCsQARsCFUYgEiYEOoxAJEwIZQiQVQuSmXzVTfEo/4tU1JgMeXLlTPA588/OWs
+    rwqUhsI3D/wgl1XY0D/Ista26nulwOvnWR5dusCdnw76qkdpQaSe0H9NqoxTCEQ3
+    8O1xbbOTANENfHv8JQQT8rPNKV1VLeJbRrc16XZFqJqM+RBtzKtdgS2JKah2VP+8
+    ZOdEpw9xOx3qzevPDuSNevp/Af1DQ14PkzCYAj4Iogn7GQqfkKveITgvf+N7OoTn
+    xsTExMTEvFcAbwGywfEKvFtf1gAAAABJRU5ErkJggg==
+    """
+    root.tk.call("wm", "iconphoto", root._w, tk.PhotoImage(data=ico_data))
 
     create_main_frame(root)
     is_admin = ctypes.windll.shell32.IsUserAnAdmin()
