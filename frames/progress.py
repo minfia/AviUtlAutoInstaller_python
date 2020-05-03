@@ -62,6 +62,32 @@ class InstallProgressWidget(tk.Frame):
         self.progress_bar.grid(row=row, column=column, sticky=(tk.W, tk.E), padx=4)
         self.columnconfigure(column, weight=1)
 
+    def __get_mode(self):
+        obj = self.progress_bar.cget("mode")
+        mode = ""
+        if type(obj) is str:
+            mode = obj
+        else:
+            mode = obj.string
+        return mode
+
+    def set_indeterminate(self):
+        """プログレスバーを不確定的に設定
+        """
+        self.progress_bar.configure(maximum=10)
+        mode = self.__get_mode()
+        if not mode == "indeterminate":
+            self.progress_bar.configure(mode = "indeterminate")
+            self.progress_bar.start()
+
+    def set_determinate(self):
+        """プログレスバーを確定的に変更
+        """
+        mode = self.__get_mode()
+        if not mode == "determinate":
+            self.progress_bar.stop()
+            self.progress_bar.configure(mode = "determinate")
+
     def set_filename(self, name):
         """ラベルに表示するファイル名をセットする
         Parameters
@@ -107,7 +133,8 @@ class InstallProgressWidget(tk.Frame):
             ファイルサイズ
         """
         self.progress_value.set(0)
-        self.progress_bar.configure(maximum=int(totalsize))
+        if self.__get_mode() == "determinate":
+            self.progress_bar.configure(maximum=int(totalsize))
         self.progress_bar.update()
         self.set_filename(name)
         self.set_filedlsize("0")
@@ -120,8 +147,9 @@ class InstallProgressWidget(tk.Frame):
         value : int
             ダウンロード済みファイルサイズ
         """
-        self.progress_value.set(value)
-        self.set_filedlsize(value)
+        if self.__get_mode() == "determinate":
+            self.progress_value.set(value)
+            self.set_filedlsize(value)
         self.progress_bar.update()
 
     def hide_frame(self):

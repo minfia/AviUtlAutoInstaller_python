@@ -33,6 +33,7 @@ def install_start(progress_instance, download_file_list):
     result = 0
     process_max = 0
     process_complete_count = 0
+    progress_instance.set_determinate()
     for item in download_file_list:
         if (item.dl_enable) and (item.result) and (not item.download_file_type == instconf.DownloadFileType.TOOL):
             process_max += 1
