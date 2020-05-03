@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import os
+from os.path import exists
+import shutil
 import sys
 import tkinter as tk
 from tkinter import messagebox
@@ -148,6 +150,15 @@ def install_button_command():
         # インストール処理
         result = instprog.install_start(install_progress_widget, instconf.download_list)
         if result == 0:
+            if instconf.backup_enable:
+                for f in instconf.download_list:
+                    if (f.download_file_type == instconf.DownloadFileType.TOOL) or ((not f.dl_enable) and (not f.result)):
+                        continue
+                    check_file = "{0}\\{1}".format(instconf.backup_dir, f.file_name)
+                    if exists(check_file):
+                        os.remove(check_file)
+                    shutil.move("{0}\\{1}".format(instconf.dl_temp_dir, f.file_name), check_file)
+
             messagebox.showinfo(title="情報", message="インストールが完了しました")
 
 def makedirs():
@@ -156,6 +167,9 @@ def makedirs():
         os.mkdir(instconf.dl_temp_dir)
         os.makedirs(instconf.script_dir)
         os.mkdir(instconf.figure_dir)
+        if (instconf.backup_enable) and (not exists(instconf.backup_dir)):
+            os.mkdir(instconf.backup_dir)
+
     except Exception as e:
         access_message = str(e)
 

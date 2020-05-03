@@ -35,6 +35,8 @@ plugins_dir = "{0}\\plugins".format(aviutl_dir)
 script_dir = "{0}\\script".format(plugins_dir)
 # 画像ディレクトリパス
 figure_dir = "{0}\\figure".format(plugins_dir)
+# バックアップディレクトリパス
+backup_dir = "{0}\\backup_files".format(aviutl_dir)
 # ダウンロードファイルのバックアップの有効化
 backup_enable = False
 # ダウンロードするファイルリスト
@@ -72,6 +74,7 @@ def install_dir_reflection(inst_dir):
     plugins_dir = "{0}\\plugins".format(aviutl_dir)
     script_dir = "{0}\\script".format(plugins_dir)
     figure_dir = "{0}\\figure".format(plugins_dir)
+    backup_dir = "{0}\\backup_files".format(aviutl_dir)
 
 def install_encoder_reflection(enc_list):
     """エンコーダの選択状態を反映する
