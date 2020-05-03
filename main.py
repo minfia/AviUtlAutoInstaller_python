@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import ctypes
 import os
 from os.path import exists
 import shutil
@@ -208,6 +209,10 @@ def main():
     root.resizable(0, 0)
 
     create_main_frame(root)
+    is_admin = ctypes.windll.shell32.IsUserAnAdmin()
+    if not is_admin == 0:
+        messagebox.showerror(title="エラー", message="管理者権限では実行できません")
+        sys.exit()
 
     root.mainloop()
 
