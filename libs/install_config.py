@@ -29,6 +29,8 @@ install_dir = ""
 aviutl_dir = "AviUtl"
 # ダウンロードファイルの一時ディレクトリパス
 dl_temp_dir = "{0}\\DL_TEMP".format(aviutl_dir)
+# 7z展開先ディレクトリパス
+sv_dir = "C:\\AviUtlAutoInstaller_7z"
 # プラグインディレクトリパス
 plugins_dir = "{0}\\plugins".format(aviutl_dir)
 # スクリプトディレクトリパス

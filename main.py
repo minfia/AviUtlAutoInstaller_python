@@ -153,7 +153,7 @@ def install_button_command():
         if not result == 0:
             if not result == 1:
                 messagebox.showerror(title = "エラー", message = "ファイルダウンロードでエラー")
-            shutil.rmtree(instconf.aviutl_dir)
+            cleanup(error = True)
             sys.exit()
 
         # インストール処理
@@ -161,7 +161,7 @@ def install_button_command():
         if not result == 0:
             if not result == 1:
                 messagebox.showerror(title = "エラー", message = "インストールに失敗しました")
-            shutil.rmtree(instconf.aviutl_dir)
+            cleanup(error = True)
             sys.exit()
 
         if instconf.backup_enable:
@@ -172,7 +172,7 @@ def install_button_command():
                 if exists(check_file):
                     os.remove(check_file)
                 shutil.move("{0}\\{1}".format(instconf.dl_temp_dir, f.file_name), check_file)
-        shutil.rmtree(instconf.dl_temp_dir)
+        cleanup()
         messagebox.showinfo(title="情報", message="インストールが完了しました")
         libs.utils.run_aviutl("{0}\\aviutl.exe".format(instconf.aviutl_dir))
         sys.exit()
@@ -181,6 +181,8 @@ def makedirs():
     try:
         os.mkdir(instconf.aviutl_dir)
         os.mkdir(instconf.dl_temp_dir)
+        if not exists(instconf.sv_dir):
+            os.makedirs(instconf.sv_dir)
         os.makedirs(instconf.script_dir)
         os.mkdir(instconf.figure_dir)
         if (instconf.backup_enable) and (not exists(instconf.backup_dir)):
@@ -189,6 +191,12 @@ def makedirs():
     except Exception as e:
         access_message = str(e)
 
+def cleanup(error = False):
+    if error:
+        shutil.rmtree(instconf.aviutl_dir)
+    else:
+        shutil.rmtree(instconf.dl_temp_dir)
+    shutil.rmtree(instconf.sv_dir)
 
 def cancel_button_command():
     """キャンセルボタン
