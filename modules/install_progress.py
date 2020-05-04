@@ -79,13 +79,14 @@ def __extract_7zip():
         0   : 成功
         -1  : 失敗
     """
-    sv_dir = "{0}\\7z".format(instconf.dl_temp_dir)
-    os.mkdir(sv_dir)
-    target_path = "targetdir={0}".format(sv_dir)
-    proc = subprocess.run(["msiexec.exe", "/a", "{0}\\7z.msi".format(instconf.dl_temp_dir), target_path, "/qn"])
+    msi_path = "{0}\\7z.msi".format(instconf.dl_temp_dir)
+    target_path = "targetdir={0}".format(instconf.sv_dir)
+    print("msi_path: {0}".format(msi_path))
+    print("target_path: {0}".format(target_path))
+    proc = subprocess.run(["msiexec.exe", "/a", msi_path, target_path, "/qn"])
     result = proc.returncode
     global __sv_cmd
-    __sv_cmd = "{0}\\Files\\7-Zip\\7z.exe".format(sv_dir)
+    __sv_cmd = "{0}\\Files\\7-Zip\\7z.exe".format(instconf.sv_dir)
 
     return result
 
