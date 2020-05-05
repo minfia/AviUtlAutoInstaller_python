@@ -12,7 +12,7 @@ def __read_ini_file(ini_file_path):
         lines : 読み出した行のリスト
     """
     lines = []
-    with open(ini_file_path, encoding = "shift_jis") as fp:
+    with open(ini_file_path, encoding="shift_jis") as fp:
         while True:
             line = fp.readline().rstrip("\r\n")
             if line == "":
@@ -30,7 +30,7 @@ def __write_ini_file(ini_file_path, lines):
         iniファイルに書き出す内容のリスト
     """
     # iniファイルに書き出し(上書き)
-    with open(ini_file_path, "w", encoding = "shift_jis") as fp:
+    with open(ini_file_path, "w", encoding="shift_jis") as fp:
         for l in lines:
             fp.write(l + "\n")
 

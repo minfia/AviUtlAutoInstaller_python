@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 import glob
 import subprocess
 import shutil
@@ -8,9 +9,10 @@ from os.path import basename
 from os.path import exists
 from os.path import splitext
 from os.path import isdir
-import libs.install_config as instconf
 import libs.inifile_config as iniconf
+import libs.install_config as instconf
 import libs.utils
+
 
 # ローカル変数
 __sv_cmd = ""
@@ -131,7 +133,7 @@ def __unzip_file(item):
         install_dir_path = ""
         for file_type in item.install_file:
             file_path = "{0}\\**\\{1}".format(unzip_path, file_type)
-            file_list = glob.glob(file_path, recursive = True)
+            file_list = glob.glob(file_path, recursive=True)
             for f in file_list:
                 if item.download_file_type == instconf.DownloadFileType.PLUGIN:
                     # プラグインのインストール
@@ -177,7 +179,7 @@ def __psdtoolkit_install(unzip_path):
 
     # プラグイン/スクリプトの移動
     install_list = os.listdir(unzip_path)
-    install_list = glob.glob("{0}\\**\\*.*".format(unzip_path), recursive = True)
+    install_list = glob.glob("{0}\\**\\*.*".format(unzip_path), recursive=True)
     for f in install_list:
         dst_file_path = "{0}".format(f.replace(unzip_path, instconf.plugins_dir))
         dst_dir_path = "{0}".format(dst_file_path.replace(basename(dst_file_path), ""))
@@ -189,6 +191,8 @@ def __psdtoolkit_install(unzip_path):
         shutil.move(f, "{0}".format(f.replace(unzip_path, instconf.plugins_dir)))
 
 def install_stop():
+    """インストールを停止する
+    """
     __install_stop = True
 
 def main():

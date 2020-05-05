@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 
+
 import dataclasses
-import enum
+from enum import auto
+from enum import Enum
+
 
 # ダウンロードファイルタイプ
-class DownloadFileType(enum.Enum):
-    TOOL = enum.auto()
-    MAIN = enum.auto()
-    PLUGIN = enum.auto()
-    SCRIPT = enum.auto()
-    ENCODER = enum.auto()
+class DownloadFileType(Enum):
+    TOOL = auto()
+    MAIN = auto()
+    PLUGIN = auto()
+    SCRIPT = auto()
+    ENCODER = auto()
 
 # ダウンロードファイルに関するクラス
 @dataclasses.dataclass
@@ -45,21 +48,21 @@ backup_enable = False
 download_list = []
 
 
-download_list.append(DownloadFile(download_file_type = DownloadFileType.TOOL ,dl_enable = True, file_name = "7z.msi", url = "https://ja.osdn.net/frs/redir.php?m=jaist&f=sevenzip%2F70468%2F7z1806.msi", priority = 0))
-download_list.append(DownloadFile(download_file_type = DownloadFileType.MAIN, dl_enable = True, file_name = "aviutl110.zip", url = "http://spring-fragrance.mints.ne.jp/aviutl/aviutl110.zip", priority = 0))
-download_list.append(DownloadFile(download_file_type = DownloadFileType.PLUGIN, dl_enable = True, file_name = "exedit92.zip", url = "http://spring-fragrance.mints.ne.jp/aviutl/exedit92.zip", priority = 0, install_file = ["exedit*.*", "lua*.*"]))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.TOOL ,dl_enable=True, file_name="7z.msi", url="https://ja.osdn.net/frs/redir.php?m=jaist&f=sevenzip%2F70468%2F7z1806.msi", priority=0))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.MAIN, dl_enable=True, file_name="aviutl110.zip", url="http://spring-fragrance.mints.ne.jp/aviutl/aviutl110.zip", priority=0))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="exedit92.zip", url="http://spring-fragrance.mints.ne.jp/aviutl/exedit92.zip", priority=0, install_file=["exedit*.*", "lua*.*"]))
 
 
 # 追加プラグイン&スクリプト
-download_list.append(DownloadFile(download_file_type = DownloadFileType.PLUGIN, dl_enable = True, file_name = "L-SMASH_Works_r940_plugins.zip", url = "https://pop.4-bit.jp/bin/l-smash/L-SMASH_Works_r940_plugins.zip", install_file = ["*.au*"]))
-download_list.append(DownloadFile(download_file_type = DownloadFileType.PLUGIN, dl_enable = True, file_name = "auls_outputpng.zip", url = "http://auls.client.jp/plugin/auls_outputpng.zip", install_file = ["*.auf"]))
-download_list.append(DownloadFile(download_file_type = DownloadFileType.PLUGIN, dl_enable = True, file_name = "psdtoolkit_v0.2beta42.zip", url = "https://github.com/oov/aviutl_psdtoolkit/releases/download/v0.2beta42/psdtoolkit_v0.2beta42.zip"))
-download_list.append(DownloadFile(download_file_type = DownloadFileType.SCRIPT, dl_enable = True, file_name = "WindShk.zip", url = "https://tim3.web.fc2.com/script/WindShk.zip", script_collect_dir_name = "ティム氏", install_file = ["*.anm"]))
-download_list.append(DownloadFile(download_file_type = DownloadFileType.SCRIPT, dl_enable = True, file_name = "InkV2.zip", url = "https://tim3.web.fc2.com/script/InkV2.zip", script_collect_dir_name = "ティム氏", install_file = ["*.obj"]))
-download_list.append(DownloadFile(download_file_type = DownloadFileType.SCRIPT, dl_enable = True, file_name = "Framing.zip", url = "https://tim3.web.fc2.com/script/Framing.zip", script_collect_dir_name = "ティム氏", install_file = ["*.dll", "*.anm"]))
-download_list.append(DownloadFile(download_file_type = DownloadFileType.SCRIPT, dl_enable = True, file_name = "ReelRot.zip", url = "https://tim3.web.fc2.com/script/ReelRot.zip", script_collect_dir_name = "ティム氏", install_file = ["*.anm"]))
-download_list.append(DownloadFile(download_file_type = DownloadFileType.SCRIPT, dl_enable = True, file_name = "VanishP2_V2.zip", url = "https://tim3.web.fc2.com/script/VanishP2_V2.zip", script_collect_dir_name = "ティム氏", install_file = ["*.anm"]))
-download_list.append(DownloadFile(download_file_type = DownloadFileType.SCRIPT, dl_enable = True, file_name = "LinHal.zip", url = "https://tim3.web.fc2.com/script/LinHal.zip", script_collect_dir_name = "ティム氏", install_file = ["*.anm"]))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="L-SMASH_Works_r940_plugins.zip", url="https://pop.4-bit.jp/bin/l-smash/L-SMASH_Works_r940_plugins.zip", install_file=["*.au*"]))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="auls_outputpng.zip", url="http://auls.client.jp/plugin/auls_outputpng.zip", install_file=["*.auf"]))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="psdtoolkit_v0.2beta42.zip", url="https://github.com/oov/aviutl_psdtoolkit/releases/download/v0.2beta42/psdtoolkit_v0.2beta42.zip"))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="WindShk.zip", url="https://tim3.web.fc2.com/script/WindShk.zip", script_collect_dir_name="ティム氏", install_file=["*.anm"]))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="InkV2.zip", url="https://tim3.web.fc2.com/script/InkV2.zip", script_collect_dir_name="ティム氏", install_file=["*.obj"]))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="Framing.zip", url="https://tim3.web.fc2.com/script/Framing.zip", script_collect_dir_name="ティム氏", install_file=["*.dll", "*.anm"]))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="ReelRot.zip", url="https://tim3.web.fc2.com/script/ReelRot.zip", script_collect_dir_name="ティム氏", install_file=["*.anm"]))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="VanishP2_V2.zip", url="https://tim3.web.fc2.com/script/VanishP2_V2.zip", script_collect_dir_name="ティム氏", install_file=["*.anm"]))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="LinHal.zip", url="https://tim3.web.fc2.com/script/LinHal.zip", script_collect_dir_name="ティム氏", install_file=["*.anm"]))
 
 
 def install_dir_reflection(inst_dir):
@@ -86,10 +89,10 @@ def install_encoder_reflection(enc_list):
         boolのリスト
     """
     global download_list
-    download_list.append(DownloadFile(download_file_type = DownloadFileType.ENCODER, dl_enable = enc_list[0], file_name = "x264guiEx_2.64v3.7z", url = "https://drive.google.com/uc?id=15IoL3jw1J8QHkoGQvq1Jy7qkujDBZ80E", priority = 0))
-    download_list.append(DownloadFile(download_file_type = DownloadFileType.ENCODER, dl_enable = enc_list[1], file_name = "QSVEnc_4.00.7z", url = "https://drive.google.com/uc?id=1SNdOcaCXazkdgdeLas-dzF9Rb8oNGjjW", priority = 0))
-    download_list.append(DownloadFile(download_file_type = DownloadFileType.ENCODER, dl_enable = enc_list[2], file_name = "NVEnc_4.69.7z", url = "https://drive.google.com/uc?id=1iTXWXqYr1uDdJC6Va6DPCgUoRZfcARJY", priority = 0))
-    download_list.append(DownloadFile(download_file_type = DownloadFileType.ENCODER, dl_enable = enc_list[3], file_name = "VCEEnc_5.04.7z", url = "https://drive.google.com/uc?id=1_hb6NLYeymc8_o-zIOlh80Ldbr_Nih4j", priority = 0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[0], file_name="x264guiEx_2.64v3.7z", url="https://drive.google.com/uc?id=15IoL3jw1J8QHkoGQvq1Jy7qkujDBZ80E", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[1], file_name="QSVEnc_4.00.7z", url="https://drive.google.com/uc?id=1SNdOcaCXazkdgdeLas-dzF9Rb8oNGjjW", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[2], file_name="NVEnc_4.69.7z", url="https://drive.google.com/uc?id=1iTXWXqYr1uDdJC6Va6DPCgUoRZfcARJY", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[3], file_name="VCEEnc_5.04.7z", url="https://drive.google.com/uc?id=1_hb6NLYeymc8_o-zIOlh80Ldbr_Nih4j", priority=0))
 
 def main():
     pass
