@@ -72,7 +72,7 @@ def install_dir_reflection(inst_dir):
     inst_dir : string
         インストール先のルートディレクトリパス
     """
-    global install_dir, aviutl_dir, dl_temp_dir, plugins_dir, script_dir, figure_dir
+    global install_dir, aviutl_dir, dl_temp_dir, plugins_dir, script_dir, figure_dir, backup_dir
     install_dir = inst_dir
     aviutl_dir = install_dir + "\\AviUtl"
     dl_temp_dir = "{0}\\DL_TEMP".format(aviutl_dir)
