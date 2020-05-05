@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 import tkinter as tk
 import tkinter.ttk as ttk
 
@@ -60,6 +61,11 @@ class EncoderSelectWidget(tk.Frame):
             self.checkbutton_status_list[i][1].set(self.checkbutton_status_list[i][2])
 
     def get_enc_type_list(self):
+        """各エンコーダのチェック状態をlistで返す
+        Returns
+        -------
+            list    : チェックボタンの状態リスト
+        """
         enc_list = [self.x264_enc_boolean.get(), self.qsv_enc_boolean.get(), self.nvenc_boolean.get(), self.vceenc_boolean.get()]
         return enc_list
 

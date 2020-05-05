@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 
-import urllib.request, os
-import enum
+
+import os
+from enum import auto
+from enum import Enum
+import urllib.request
 
 
-class DownloadStatus(enum.Enum):
-    NONE = enum.auto()
-    CONNECT = enum.auto()
-    CONNECTING = enum.auto()
-    FINISH = enum.auto()
-    ERROR = enum.auto()
+class DownloadStatus(Enum):
+    NONE = auto()
+    CONNECT = auto()
+    CONNECTING = auto()
+    FINISH = auto()
+    ERROR = auto()
 
 class FileDownload:
     def __init__(self):

@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
+
 from concurrent.futures import ThreadPoolExecutor
 from os.path import getsize
 import libs.file_download as dl
 import libs.install_config as instconf
+
 
 # ローカル変数
 __downloader = None
@@ -73,6 +75,9 @@ def download_stop():
     global __downloader
     if not __downloader == None:
         __downloader.download_stop()
+
+def main():
+    pass
 
 if __name__ == '__main__':
     main()

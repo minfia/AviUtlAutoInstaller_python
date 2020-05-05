@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
+
 import tkinter as tk
 import tkinter.ttk as ttk
+
 
 class InstallProgressWidget(tk.Frame):
     def __init__(self, master=None, bg="white"):
@@ -63,6 +65,11 @@ class InstallProgressWidget(tk.Frame):
         self.columnconfigure(column, weight=1)
 
     def __get_mode(self):
+        """プログレスバーのモードを文字列で返す
+        Returns
+        -------
+            mode    : モード
+        """
         obj = self.progress_bar.cget("mode")
         mode = ""
         if type(obj) is str:

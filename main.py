@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 import ctypes
 import os
 from os.path import exists
@@ -8,6 +9,8 @@ import sys
 import tkinter as tk
 from tkinter import messagebox
 import tkinter.ttk as ttk
+
+# 自作モジュール
 import frames.install_dir as instdir
 import frames.enc_select as encsel
 import frames.progress as prog
@@ -16,14 +19,19 @@ import modules.install_progress as instprog
 import libs.install_config as instconf
 import libs.utils
 
+
+# アプリバージョン
 APP_VERSION = "0.1.0"
 
+# ウィジェットのインスタンス格納変数
 install_pre_widget = None
 encoder_sel_widget = None
 
+# フレームのインスタンス格納変数
 preparation_frame = None
 progress_frame = None
 
+# ボタンのインスタンス格納変数
 install_button = None
 cancel_button = None
 
@@ -152,7 +160,7 @@ def install_button_command():
         result = dlprog.download_start(install_progress_widget, instconf.download_list)
         if not result == 0:
             if not result == 1:
-                messagebox.showerror(title = "エラー", message = "ファイルダウンロードでエラー")
+                messagebox.showerror(title="エラー", message="ファイルダウンロードでエラー")
             cleanup(error = True)
             sys.exit()
 
@@ -160,12 +168,13 @@ def install_button_command():
         result = instprog.install_start(install_progress_widget, instconf.download_list)
         if not result == 0:
             if not result == 1:
-                messagebox.showerror(title = "エラー", message = "インストールに失敗しました")
+                messagebox.showerror(title="エラー", message="インストールに失敗しました")
             cleanup(error = True)
             sys.exit()
 
         if instconf.backup_enable:
             for f in instconf.download_list:
+                # download_listからダウンロードしたファイルを抽出する
                 if (f.download_file_type == instconf.DownloadFileType.TOOL) or ((not f.dl_enable) and (not f.result)):
                     continue
                 check_file = "{0}\\{1}".format(instconf.backup_dir, f.file_name)
@@ -224,7 +233,8 @@ def main():
     root.protocol("WM_DELETE_WINDOW", close_event)
     # ウィンドウサイズ固定
     root.resizable(0, 0)
-    
+
+    # アイコンの埋め込み
     ico_data = """iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEBklEQVR4nO2bS2gU
     dxzHP/+4boymm4ctIULBHmJaBR8H6UV7aUUxEPASGkx6sIciFMFLT2qR6sXHQW/F
     By1iPbQIHlTwgaD0oAVBIVAxpGkPgaVm18Tousm6I/91kuxMZmb/89idWTMfGDKv
@@ -252,6 +262,8 @@ def main():
     root.tk.call("wm", "iconphoto", root._w, tk.PhotoImage(data=ico_data))
 
     create_main_frame(root)
+
+    # 管理者権限実行チェック
     is_admin = ctypes.windll.shell32.IsUserAnAdmin()
     if not is_admin == 0:
         messagebox.showerror(title="エラー", message="管理者権限では実行できません")
