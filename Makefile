@@ -1,5 +1,5 @@
 PROG := AviUtlAutoInstaller
-SRCS := main.py
+SRCS := src/main.py
 
 # 実行対象のPython
 PYTHON := python.exe
@@ -19,15 +19,15 @@ all : $(PROG)
 
 $(PROG) : 
 	@mkdir.exe -p release
-	$(PYINST) $(FLAGS) --workpath ./release/$(WORKDIR) --distpath ./release/$(OUTDIR) release.spec
+	$(PYINST) $(FLAGS) --workpath ./release/$(WORKDIR) --distpath ./release/$(OUTDIR) spec/release.spec
 
 run :
 	@$(PYTHON) $(SRCS)
 
 debug :
 	@mkdir.exe -p debug
-	$(PYINST) $(FLAGS) --workpath ./debug/$(WORKDIR) --distpath ./debug/$(OUTDIR) debug.spec
+	$(PYINST) $(FLAGS) --workpath ./debug/$(WORKDIR) --distpath ./debug/$(OUTDIR) spec/debug.spec
 
 clean :
-	@rm.exe -rf ./release ./debug __pycache__/ */__pycache__/
+	@rm.exe -rf ./release ./debug src/__pycache__/ src/*/__pycache__/
 
