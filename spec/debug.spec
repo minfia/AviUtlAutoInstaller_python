@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['main.py'],
+a = Analysis(['..\\src\\main.py'],
              pathex=['.\\AviUtlAutoInstaller'],
              binaries=[],
              datas=[],
@@ -31,4 +31,4 @@ exe = EXE(pyz,
           upx_exclude=[],
           runtime_tmpdir=None,
           console=True,
-          icon='AAI.ico')
+          icon='..\\binaries\\AAI.ico')
