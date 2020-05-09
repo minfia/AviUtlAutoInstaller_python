@@ -43,6 +43,8 @@ class FileDownload:
             -3  : ExceptionError
         """
         self.__google_flag = False
+        self.download_file_size = 0
+        self.download_complete_size = 0
         if "drive.google.com" in url:
             self.__google_flag = True
 
@@ -89,8 +91,8 @@ class FileDownload:
 #            print("Ex: {0}".format(e))
             return -3
         finally:
-            self.download_file_size = 0
-            self.download_complete_size = 0
+            pass
+
 
     def download_stop(self):
         self.__download_stop = True
