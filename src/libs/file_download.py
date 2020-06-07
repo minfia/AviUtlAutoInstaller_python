@@ -91,7 +91,8 @@ class FileDownload:
 #            print("Ex: {0}".format(e))
             return -3
         finally:
-            pass
+            self.__openter.close()
+            self.__httpres.close()
 
 
     def download_stop(self):
