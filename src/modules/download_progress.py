@@ -3,7 +3,7 @@
 
 from concurrent.futures import ThreadPoolExecutor
 from os.path import getsize
-import libs.file_download as dl
+import libs.network.file_download as dl
 import libs.install_config as instconf
 
 
