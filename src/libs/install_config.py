@@ -56,7 +56,7 @@ download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl
 # 追加プラグイン&スクリプト
 download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="L-SMASH_Works_r940_plugins.zip", url="https://pop.4-bit.jp/bin/l-smash/L-SMASH_Works_r940_plugins.zip", install_file=["*.au*"]))
 download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="auls_outputpng.zip", url="http://auls.client.jp/plugin/auls_outputpng.zip", install_file=["*.auf"]))
-download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="psdtoolkit_v0.2beta48.zip", url="https://github.com/oov/aviutl_psdtoolkit/releases/download/v0.2beta48/psdtoolkit_v0.2beta48.zip"))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="psdtoolkit_v0.2beta49.zip", url="https://github.com/oov/aviutl_psdtoolkit/releases/download/v0.2beta49/psdtoolkit_v0.2beta49.zip"))
 download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="WindShk.zip", url="https://tim3.web.fc2.com/script/WindShk.zip", script_collect_dir_name="ティム氏", install_file=["*.anm"]))
 download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="InkV2.zip", url="https://tim3.web.fc2.com/script/InkV2.zip", script_collect_dir_name="ティム氏", install_file=["*.obj"]))
 download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="Framing.zip", url="https://tim3.web.fc2.com/script/Framing.zip", script_collect_dir_name="ティム氏", install_file=["*.dll", "*.anm"]))
