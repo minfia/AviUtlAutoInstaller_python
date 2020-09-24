@@ -18,16 +18,16 @@ OUTDIR := bin
 all : $(PROG)
 
 $(PROG) : 
-	@mkdir.exe -p release
+	@mkdir -p release
 	$(PYINST) $(FLAGS) --workpath ./release/$(WORKDIR) --distpath ./release/$(OUTDIR) spec/release.spec
 
 run :
 	@$(PYTHON) $(SRCS)
 
 debug :
-	@mkdir.exe -p debug
+	@mkdir -p debug
 	$(PYINST) $(FLAGS) --workpath ./debug/$(WORKDIR) --distpath ./debug/$(OUTDIR) spec/debug.spec
 
 clean :
-	@rm.exe -rf ./release ./debug src/__pycache__/ src/*/__pycache__/
+	@rm -rf ./release ./debug src/__pycache__/ src/*/__pycache__/
 
