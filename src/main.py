@@ -21,7 +21,7 @@ import libs.utils
 
 
 # アプリバージョン
-APP_VERSION = "0.1.2"
+APP_VERSION = "0.1.3"
 
 # ウィジェットのインスタンス格納変数
 install_pre_widget = None
