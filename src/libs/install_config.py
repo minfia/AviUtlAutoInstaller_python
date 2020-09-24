@@ -89,10 +89,10 @@ def install_encoder_reflection(enc_list):
         boolのリスト
     """
     global download_list
-    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[0], file_name="x264guiEx_2.65v2.7z", url="https://dl.dropboxusercontent.com/sh/q6afzrpcrl8nsda/AAAsdMuegINAP07jSPVDOXRka/x264guiEx_2.65v2.zip", priority=0))
-    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[1], file_name="QSVEnc_4.00.7z", url="https://drive.google.com/uc?id=1SNdOcaCXazkdgdeLas-dzF9Rb8oNGjjW", priority=0))
-    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[2], file_name="NVEnc_4.69.7z", url="https://drive.google.com/uc?id=1iTXWXqYr1uDdJC6Va6DPCgUoRZfcARJY", priority=0))
-    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[3], file_name="VCEEnc_5.04.7z", url="https://drive.google.com/uc?id=1_hb6NLYeymc8_o-zIOlh80Ldbr_Nih4j", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[0], file_name="x264guiEx_2.65v2.zip", url="https://dl.dropboxusercontent.com/sh/q6afzrpcrl8nsda/AAAsdMuegINAP07jSPVDOXRka/x264guiEx_2.65v2.zip", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[1], file_name="QSVEnc_4.07.7z", url="https://drive.google.com/uc?id=1M8G9gfRes7JhX-xGCNW9OwIbzTgXRuX6", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[2], file_name="NVEnc_5.15.7z", url="https://drive.google.com/uc?id=1E8OZMftN6FynswbWFVHOTzfdCT47ebbT", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[3], file_name="VCEEnc_6.04.7z", url="https://drive.google.com/uc?id=1Ab6QkSeJvVEuUvqUIHHl7JaZl-Fo5xO4", priority=0))
 
 def main():
     pass

@@ -54,7 +54,7 @@ def download_start(progress_instance, download_file_list):
                 # エラー以外
                 if dl_result == 0:
                     # 正常終了
-                    if (item.download_file_type == instconf.DownloadFileType.ENCODER) and (getsize("{0}\\{1}".format(instconf.dl_temp_dir, item.file_name)) < 1000000):
+                    if (item.download_file_type == instconf.DownloadFileType.ENCODER) and (getsize("{0}\\{1}".format(instconf.dl_temp_dir, item.file_name)) < 4000000):
                         # エンコーダダウンロードエラー
                         continue
                     item.result = True
