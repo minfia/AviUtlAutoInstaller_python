@@ -156,6 +156,8 @@ def __unzip_file(item):
     elif item.download_file_type == instconf.DownloadFileType.ENCODER:
         # エンコーダ
         encoder_dir = "{0}\\{1}".format(unzip_path, splitext(item.file_name)[0])
+        if "x264gui" in item.file_name:
+            encoder_dir = encoder_dir[:len(encoder_dir)-5]
         proc = subprocess.run(["{0}\\auo_setup.exe".format(encoder_dir), "-autorun", "-nogui", "-dir", instconf.aviutl_dir])
         shutil.rmtree(encoder_dir)
         result = proc.returncode

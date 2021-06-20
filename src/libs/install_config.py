@@ -56,7 +56,7 @@ download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl
 # 追加プラグイン&スクリプト
 download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="L-SMASH_Works_r940_plugins.zip", url="https://pop.4-bit.jp/bin/l-smash/L-SMASH_Works_r940_plugins.zip", install_file=["*.au*"]))
 download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="auls_outputpng.zip", url="http://auls.client.jp/plugin/auls_outputpng.zip", install_file=["*.auf"]))
-download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="psdtoolkit_v0.2beta49.zip", url="https://github.com/oov/aviutl_psdtoolkit/releases/download/v0.2beta49/psdtoolkit_v0.2beta49.zip"))
+download_list.append(DownloadFile(download_file_type=DownloadFileType.PLUGIN, dl_enable=True, file_name="psdtoolkit_v0.2beta52.zip", url="https://github.com/oov/aviutl_psdtoolkit/releases/download/v0.2beta52/psdtoolkit_v0.2beta52.zip"))
 download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="WindShk.zip", url="https://tim3.web.fc2.com/script/WindShk.zip", script_collect_dir_name="ティム氏", install_file=["*.anm"]))
 download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="InkV2.zip", url="https://tim3.web.fc2.com/script/InkV2.zip", script_collect_dir_name="ティム氏", install_file=["*.obj"]))
 download_list.append(DownloadFile(download_file_type=DownloadFileType.SCRIPT, dl_enable=True, file_name="Framing.zip", url="https://tim3.web.fc2.com/script/Framing.zip", script_collect_dir_name="ティム氏", install_file=["*.dll", "*.anm"]))
@@ -89,10 +89,10 @@ def install_encoder_reflection(enc_list):
         boolのリスト
     """
     global download_list
-    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[0], file_name="x264guiEx_2.65v2.zip", url="https://dl.dropboxusercontent.com/sh/q6afzrpcrl8nsda/AAAsdMuegINAP07jSPVDOXRka/x264guiEx_2.65v2.zip", priority=0))
-    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[1], file_name="QSVEnc_4.07.7z", url="https://drive.google.com/uc?id=1M8G9gfRes7JhX-xGCNW9OwIbzTgXRuX6", priority=0))
-    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[2], file_name="NVEnc_5.15.7z", url="https://drive.google.com/uc?id=1E8OZMftN6FynswbWFVHOTzfdCT47ebbT", priority=0))
-    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[3], file_name="VCEEnc_6.04.7z", url="https://drive.google.com/uc?id=1Ab6QkSeJvVEuUvqUIHHl7JaZl-Fo5xO4", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[0], file_name="x264guiEx_2.66_7zip.7z", url="https://drive.google.com/uc?id=1Qk8zBzFhN9PpcU6D2xWG0Rz5swLVLrLJ", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[1], file_name="QSVEnc_4.12.7z", url="https://drive.google.com/uc?id=1y6Qi3Zqvfs3s0fPV9zlt7S9B2WHk8X-G", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[2], file_name="NVEnc_5.28.7z", url="https://drive.google.com/uc?id=1tYS4XY5gcz6Em80cSdIFqD1VU9fHslZj", priority=0))
+    download_list.append(DownloadFile(download_file_type=DownloadFileType.ENCODER, dl_enable=enc_list[3], file_name="VCEEnc_6.08.7z", url="https://drive.google.com/uc?id=1uqS3NHoVnP0Eza4P0aEyb17u4C-RJBCQ", priority=0))
 
 def main():
     pass
