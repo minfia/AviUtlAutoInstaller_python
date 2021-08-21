@@ -1,4 +1,6 @@
 # AviUtlAutoInstaller
+このプロジェクトは終了しました。  
+現在は、[こちら](https://github.com/minfia/AviUtlAutoInstaller)がメインストリームです。  
 AviUtlの動画作成環境を自動で行うツールです。
 
 ## 注意
